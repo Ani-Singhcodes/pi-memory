@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5593631171008011"
+     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>π — Memorized</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --ink:#0a0d18;
+  --ink-2:#131a2e;
+  --ink-3:#1b2340;
+  --paper:#f6efe0;
+  --vermilion:#e1483c;
+  --vermilion-2:#ff6b5a;
+  --gold:#d9a441;
+  --gold-2:#f0c869;
+  --jade:#2f8f6e;
+  --jade-2:#49c79a;
+  --dim:#8b93ab;
+  --danger:#ff5c5c;
+  --ok:#3ddc97;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:
+    radial-gradient(circle at 12% 8%, rgba(225,72,60,0.16), transparent 40%),
+    radial-gradient(circle at 88% 15%, rgba(217,164,65,0.14), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(47,143,110,0.12), transparent 50%),
+    var(--ink);
+  color:var(--paper);
+  font-family:'Inter', sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+}
+
+.bg-grid{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(246,239,224,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246,239,224,0.035) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:radial-gradient(circle at 50% 30%, black, transparent 75%);
+}
+.bg-ring{
+  position:fixed; border-radius:50%; border:1px solid rgba(217,164,65,0.12);
+  pointer-events:none; z-index:0;
+}
+.bg-ring.r1{ width:900px; height:900px; top:-300px; left:-250px; }
+.bg-ring.r2{ width:600px; height:600px; bottom:-250px; right:-150px; border-color:rgba(225,72,60,0.10); }
+
+.topnav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 28px;
+  backdrop-filter:blur(10px);
+  background:linear-gradient(180deg, rgba(10,13,24,0.85), rgba(10,13,24,0));
+}
+.brand{
+  display:flex; flex-direction:column; gap:2px;
+}
+.brand .brand-title{
+  font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.15rem;
+  letter-spacing:0.02em; display:flex; align-items:center; gap:8px;
+}
+.brand .glyph{
+  color:var(--gold); font-size:1.4rem; filter:drop-shadow(0 0 8px rgba(217,164,65,0.7));
+  display:inline-flex;
+}
+.brand .brand-credit{
+  font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.05em;
+  color:var(--dim); padding-left:30px;
+}
+.nav-actions{ display:flex; align-items:center; gap:10px; }
+.nav-btn{
+  font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:0.82rem;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--dim); background:rgba(246,239,224,0.04);
+  border:1px solid rgba(246,239,224,0.1); border-radius:999px;
+  padding:8px 16px; cursor:pointer; transition:all 0.25s ease;
+}
+.nav-btn:hover{ color:var(--paper); border-color:rgba(217,164,65,0.5); background:rgba(217,164,65,0.08); }
+.nav-btn.active{ color:var(--ink); background:var(--gold); border-color:var(--gold); }
+.streak-badge{
+  font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--gold-2);
+  background:rgba(217,164,65,0.1); border:1px solid rgba(217,164,65,0.3);
+  border-radius:999px; padding:6px 12px; display:flex; align-items:center; gap:6px;
+}
+
+main{ position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:110px 24px 80px; }
+
+.view{ display:none; animation:fadeUp 0.5s ease; }
+.view.active{ display:block; }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+.eyebrow{
+  font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.22em;
+  text-transform:uppercase; color:var(--vermilion-2); text-align:center; margin-bottom:14px;
+}
+h1.hero-title{
+  font-family:'Space Grotesk', sans-serif; font-weight:700;
+  font-size:clamp(2.4rem, 6vw, 4.6rem); text-align:center; line-height:1.05;
+  background:linear-gradient(120deg, var(--paper) 40%, var(--gold-2) 70%, var(--vermilion-2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  margin-bottom:18px;
+}
+.hero-sub{
+  text-align:center; color:var(--dim); font-size:1.02rem; max-width:560px; margin:0 auto 46px;
+}
+
+.ring-wrap{ display:flex; justify-content:center; margin-bottom:20px; position:relative; }
+.pi-ring{ width:340px; height:340px; position:relative; }
+.pi-ring svg circle.track{ fill:none; stroke:rgba(246,239,224,0.06); stroke-width:1.5; }
+.pi-ring svg circle.draw{
+  fill:none; stroke:url(#ringGrad); stroke-width:2.4; stroke-linecap:round;
+  stroke-dasharray:880; stroke-dashoffset:880;
+  animation:drawRing 2.6s cubic-bezier(.2,.7,.2,1) forwards, pulseGlow 3.6s ease-in-out 2.6s infinite;
+  transform:rotate(-90deg); transform-origin:50% 50%;
+}
+@keyframes drawRing{ to{ stroke-dashoffset:0; } }
+@keyframes pulseGlow{ 0%,100%{ filter:drop-shadow(0 0 3px rgba(217,164,65,0.5)); } 50%{ filter:drop-shadow(0 0 12px rgba(217,164,65,0.85)); } }
+.ring-digit{
+  position:absolute; top:50%; left:50%; width:26px; height:26px;
+  margin:-13px 0 0 -13px; display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:0.95rem;
+  border-radius:50%; background:var(--ink-2); border:1px solid rgba(217,164,65,0.25);
+  opacity:0; animation:popIn 0.4s ease forwards;
+}
+.ring-digit.d0{ color:var(--vermilion-2); border-color:rgba(225,72,60,0.4); font-size:1.1rem; }
+@keyframes popIn{ from{opacity:0; transform:scale(0.4);} to{opacity:1; transform:scale(1);} }
+.ring-center{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  text-align:center; z-index:2;
+}
+.typewriter{
+  font-family:'JetBrains Mono', monospace; font-weight:600; font-size:1.15rem;
+  color:var(--gold-2); white-space:nowrap;
+}
+.typewriter .cursor{ display:inline-block; width:2px; background:var(--vermilion-2); margin-left:2px; animation:blink 1s step-end infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+.ring-caption{ font-size:0.7rem; color:var(--dim); letter-spacing:0.12em; text-transform:uppercase; margin-top:6px; }
+
+.cards{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:56px 0 40px; }
+@media (max-width:680px){ .cards{ grid-template-columns:1fr; } }
+.mode-card{
+  position:relative; padding:34px 28px; border-radius:20px; cursor:pointer;
+  border:1px solid rgba(246,239,224,0.1); overflow:hidden;
+  transition:transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  background:linear-gradient(160deg, rgba(246,239,224,0.03), rgba(246,239,224,0.01));
+}
+.mode-card:hover{ transform:translateY(-6px) rotate(-0.3deg); border-color:rgba(217,164,65,0.5); box-shadow:0 20px 50px -20px rgba(217,164,65,0.35); }
+.mode-card.test:hover{ border-color:rgba(225,72,60,0.5); box-shadow:0 20px 50px -20px rgba(225,72,60,0.35); }
+.mode-card .tag{
+  font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--jade-2); margin-bottom:10px; display:block;
+}
+.mode-card.test .tag{ color:var(--vermilion-2); }
+.mode-card h3{ font-family:'Space Grotesk', sans-serif; font-size:1.6rem; margin-bottom:10px; }
+.mode-card p{ color:var(--dim); font-size:0.92rem; line-height:1.5; }
+.mode-card .arrow{ position:absolute; right:24px; bottom:24px; font-size:1.4rem; color:var(--gold); transition:transform 0.3s ease; }
+.mode-card:hover .arrow{ transform:translate(4px,-4px); }
+
+.facts{
+  display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; margin-top:30px;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.facts::-webkit-scrollbar{ display:none; height:0; }
+.fact-chip{
+  flex:0 0 auto; font-size:0.82rem; color:var(--dim); background:rgba(246,239,224,0.03);
+  border:1px solid rgba(246,239,224,0.08); border-radius:12px; padding:12px 16px; max-width:230px;
+}
+.fact-chip b{ color:var(--gold-2); }
+
+.section-head{ margin-bottom:28px; }
+.section-head .eyebrow{ text-align:left; margin-bottom:6px; }
+.section-head h2{ font-family:'Space Grotesk', sans-serif; font-size:2rem; }
+.section-head p{ color:var(--dim); margin-top:8px; max-width:520px; }
+
+.controls{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:26px; align-items:center; }
+.control-group{ display:flex; align-items:center; gap:8px; }
+.control-group label{ font-size:0.78rem; color:var(--dim); letter-spacing:0.04em; }
+select, .pill-btn{
+  font-family:'Inter', sans-serif; font-size:0.85rem; color:var(--paper);
+  background:var(--ink-3); border:1px solid rgba(246,239,224,0.14); border-radius:10px;
+  padding:9px 12px; cursor:pointer;
+}
+.btn{
+  font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:0.85rem;
+  border-radius:10px; padding:10px 20px; cursor:pointer; border:none; letter-spacing:0.02em;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn:focus-visible, select:focus-visible, .nav-btn:focus-visible, input:focus-visible{
+  outline:2px solid var(--gold-2); outline-offset:2px;
+}
+.btn-primary{ background:linear-gradient(120deg, var(--gold), var(--gold-2)); color:var(--ink); box-shadow:0 8px 24px -8px rgba(217,164,65,0.6); }
+.btn-ghost{ background:transparent; color:var(--paper); border:1px solid rgba(246,239,224,0.2); }
+.btn-danger{ background:linear-gradient(120deg, var(--vermilion), var(--vermilion-2)); color:var(--paper); box-shadow:0 8px 24px -8px rgba(225,72,60,0.6); }
+
+.progress-track{ height:8px; border-radius:999px; background:rgba(246,239,224,0.08); overflow:hidden; margin-bottom:26px; }
+.progress-fill{ height:100%; background:linear-gradient(90deg, var(--jade), var(--jade-2)); border-radius:999px; transition:width 0.4s ease; }
+
+.digit-panel{
+  background:rgba(246,239,224,0.02); border:1px solid rgba(246,239,224,0.08);
+  border-radius:18px; padding:28px; margin-bottom:24px;
+}
+.digit-grid{ display:flex; flex-wrap:wrap; gap:8px 4px; font-family:'JetBrains Mono', monospace; }
+.digit-group{ display:flex; gap:3px; margin-right:14px; margin-bottom:10px; }
+.digit-tile{
+  width:34px; height:42px; display:flex; align-items:center; justify-content:center;
+  border-radius:8px; font-size:1.15rem; font-weight:600;
+  background:rgba(246,239,224,0.04); color:rgba(246,239,224,0.15);
+  transition:all 0.3s ease; border:1px solid transparent;
+}
+.digit-tile.revealed{ color:var(--paper); background:rgba(217,164,65,0.08); border-color:rgba(217,164,65,0.2); }
+.digit-tile.newest{ animation:tileReveal 0.5s ease; border-color:var(--gold); background:rgba(217,164,65,0.18); }
+.digit-tile.lead{ color:var(--vermilion-2); }
+@keyframes tileReveal{ from{ transform:scale(0.5) translateY(8px); opacity:0; } to{ transform:scale(1) translateY(0); opacity:1; } }
+
+.mnemonic-box{
+  background:rgba(47,143,110,0.06); border:1px solid rgba(47,143,110,0.25);
+  border-radius:14px; padding:18px 22px; font-size:0.9rem; color:var(--paper); line-height:1.6;
+}
+.mnemonic-box .label{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--jade-2); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px; }
+
+.test-intro{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:24px; }
+.test-input-grid{ display:flex; flex-wrap:wrap; gap:8px 4px; margin-bottom:24px; }
+.test-group{ display:flex; gap:3px; margin-right:14px; margin-bottom:10px; }
+.digit-input{
+  width:34px; height:42px; text-align:center; font-family:'JetBrains Mono', monospace;
+  font-size:1.15rem; font-weight:700; border-radius:8px; border:1px solid rgba(246,239,224,0.16);
+  background:rgba(246,239,224,0.03); color:var(--paper); transition:all 0.25s ease;
+}
+.digit-input.correct{ background:rgba(61,220,151,0.14); border-color:var(--ok); color:var(--ok); }
+.digit-input.incorrect{ background:rgba(255,92,92,0.14); border-color:var(--danger); color:var(--danger); }
+.digit-input.current{ border-color:var(--gold); box-shadow:0 0 0 3px rgba(217,164,65,0.15); }
+
+.result-panel{
+  display:none; background:rgba(246,239,224,0.02); border:1px solid rgba(246,239,224,0.1);
+  border-radius:18px; padding:26px 28px; margin-top:10px;
+}
+.result-panel.show{ display:block; animation:fadeUp 0.4s ease; }
+.result-stats{ display:flex; flex-wrap:wrap; gap:28px; margin-bottom:10px; }
+.stat{ min-width:120px; }
+.stat .num{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.8rem; }
+.stat .num.ok{ color:var(--ok); }
+.stat .num.warn{ color:var(--gold-2); }
+.stat .lbl{ font-size:0.72rem; color:var(--dim); letter-spacing:0.08em; text-transform:uppercase; }
+.result-msg{ color:var(--dim); font-size:0.9rem; margin-top:6px; }
+
+.confetti-piece{
+  position:fixed; top:-10px; width:8px; height:14px; z-index:100; pointer-events:none;
+  animation:confettiFall linear forwards;
+}
+@keyframes confettiFall{ to{ transform:translateY(110vh) rotate(540deg); opacity:0.2; } }
+
+footer{ text-align:center; color:var(--dim); font-size:0.78rem; padding:20px 0 40px; position:relative; z-index:1; }
+footer .footer-credit{
+  margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+  line-height:1.8; color:var(--dim);
+}
+footer .footer-credit a{
+  color:var(--gold-2); text-decoration:none; border-bottom:1px solid rgba(217,164,65,0.35);
+  transition:color 0.2s ease, border-color 0.2s ease;
+}
+footer .footer-credit a:hover{ color:var(--gold); border-color:var(--gold); }
+footer .footer-copyright{
+  margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:0.7rem;
+  letter-spacing:0.06em; color:rgba(139,147,171,0.6);
+}
+
+.intro-overlay{
+  position:fixed; inset:0; z-index:999; background:var(--ink);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.intro-stack{
+  position:relative; z-index:2; display:flex; flex-direction:column;
+  align-items:center; gap:14px;
+}
+.intro-credit{
+  font-family:'JetBrains Mono', monospace; font-size:0.85rem; letter-spacing:0.08em;
+  color:var(--dim); opacity:0; animation:creditIn 0.5s ease 0.35s forwards;
+}
+@keyframes creditIn{ to{ opacity:1; } }
+.intro-credit.pi-exploding{ animation:piOut 0.3s ease forwards; }
+.intro-pi{
+  font-size:clamp(5rem, 22vw, 13rem); color:var(--gold);
+  filter:drop-shadow(0 0 26px rgba(217,164,65,0.55));
+  opacity:0; transform:scale(0.85);
+  animation:piIn 0.5s ease forwards;
+}
+@keyframes piIn{ to{ opacity:1; transform:scale(1); } }
+.intro-pi.pi-exploding{ animation:piOut 0.35s ease forwards; }
+@keyframes piOut{ to{ opacity:0; transform:scale(1.18); filter:blur(3px); } }
+.intro-dots{ position:absolute; inset:0; z-index:1; }
+.intro-dot{
+  position:absolute; top:50%; left:50%; border-radius:50%;
+  transform:translate(-50%,-50%) scale(0.4);
+  opacity:0;
+  animation:dotFly 1.3s cubic-bezier(.16,.7,.3,1) forwards;
+}
+@keyframes dotFly{
+  0%{ opacity:0; transform:translate(-50%,-50%) scale(0.3); }
+  25%{ opacity:1; }
+  100%{ opacity:1; transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1); }
+}
+
+.cursor-dot, .cursor-ring{
+  display:none; position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+  border-radius:50%; transform:translate(-50%,-50%);
+}
+.cursor-dot{
+  width:6px; height:6px; background:var(--gold-2);
+  box-shadow:0 0 10px rgba(217,164,65,0.85);
+}
+.cursor-ring{
+  width:30px; height:30px; border:1.5px solid var(--gold);
+  opacity:0.75; transition:width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+.cursor-ring.hovering{
+  width:46px; height:46px; border-color:var(--vermilion-2); opacity:0.9;
+}
+@media (pointer:fine){
+  body{ cursor:none; }
+  .cursor-dot, .cursor-ring{ display:block; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001s !important; animation-iteration-count:1 !important; transition-duration:0.001s !important; }
+}
+
+@media (max-width:560px){
+  .pi-ring{ width:270px; height:270px; }
+  .typewriter{ font-size:0.85rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="intro-overlay" id="introOverlay" aria-hidden="true">
+  <div class="intro-stack">
+    <div class="intro-pi" id="introPi">
+      <svg viewBox="0 0 120 120" width="1em" height="1em" style="display:block" aria-hidden="true">
+        <path d="M12 34 H108" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+        <path d="M36 34 V102" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+        <path d="M84 34 C84 64 84 84 100 102" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="intro-credit" id="introCredit">by Aniruddh Singh</div>
+  </div>
+  <div class="intro-dots" id="introDots"></div>
+</div>
+
+<div class="bg-grid"></div>
+<div class="bg-ring r1"></div>
+<div class="bg-ring r2"></div>
+
+<nav class="topnav">
+  <div class="brand">
+    <span class="brand-title">
+      <span class="glyph">
+        <svg viewBox="0 0 120 120" width="1em" height="1em" style="display:block" aria-hidden="true">
+          <path d="M12 34 H108" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+          <path d="M36 34 V102" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+          <path d="M84 34 C84 64 84 84 100 102" stroke="currentColor" stroke-width="15" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span> PiMemory
+    </span>
+    <span class="brand-credit">by Aniruddh Singh</span>
+  </div>
+  <div class="nav-actions">
+    <span class="streak-badge" id="bestBadge">best streak: 0</span>
+    <button class="nav-btn active" data-view="home" onclick="switchView('home')">Home</button>
+    <button class="nav-btn" data-view="learn" onclick="switchView('learn')">Learn</button>
+    <button class="nav-btn" data-view="test" onclick="switchView('test')">Test</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <div class="eyebrow">THE CIRCLE CONSTANT</div>
+    <h1 class="hero-title"><span style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;">π</span>, memorized.</h1>
+    <p class="hero-sub">A circle's circumference divided by its diameter, forever. Learn it one chunk at a time, then prove it under pressure.</p>
+
+    <div class="ring-wrap">
+      <div class="pi-ring" id="piRing">
+        <svg width="340" height="340" viewBox="0 0 340 340">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e1483c"/>
+              <stop offset="55%" stop-color="#d9a441"/>
+              <stop offset="100%" stop-color="#2f8f6e"/>
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="170" cy="170" r="140"></circle>
+          <circle class="draw" cx="170" cy="170" r="140"></circle>
+        </svg>
+        <div class="ring-center">
+          <div class="typewriter" id="typewriter"><span class="cursor">&nbsp;</span></div>
+          <div class="ring-caption">circumference ÷ diameter</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="mode-card learn" onclick="switchView('learn')">
+        <span class="tag">01 — Study</span>
+        <h3>Learn the digits</h3>
+        <p>Reveal pi in small, spaced-out chunks. Set your own pace, watch each new group light up, and lean on a mnemonic to lock in the first digits.</p>
+        <span class="arrow">↗</span>
+      </div>
+      <div class="mode-card test" onclick="switchView('test')">
+        <span class="tag">02 — Recall</span>
+        <h3>Test yourself</h3>
+        <p>Type the digits from memory. Every box turns green the moment it's right, red the moment it's wrong — no guessing where you stand.</p>
+        <span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="facts" id="factsStrip"></div>
+  </section>
+
+  <!-- LEARN -->
+  <section class="view" id="view-learn">
+    <div class="section-head">
+      <div class="eyebrow">STUDY MODE</div>
+      <h2>Reveal it gradually</h2>
+      <p>Pick how many digits show per group and how far you want to go today. New groups pop in highlighted so you always know what's fresh.</p>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="chunkSizeInput">Chunk size</label>
+        <input type="text" id="chunkSizeInput" class="pill-btn" style="width:60px;"
+               inputmode="numeric" value="5" maxlength="2"
+               aria-describedby="chunkSizeWarning">
+        <span style="font-size:0.82rem;color:var(--dim);">digits/group (1–25)</span>
+      </div>
+      <span id="chunkSizeWarning" role="alert" style="display:none; font-size:0.78rem; color:var(--danger); font-family:'JetBrains Mono',monospace;">Numbers only — letters aren't allowed here.</span>
+      <div class="control-group">
+        <label for="learnGoalInput">Study up to</label>
+        <input type="text" id="learnGoalInput" class="pill-btn" style="width:70px;"
+               inputmode="numeric" value="20" maxlength="5"
+               aria-describedby="learnGoalWarning">
+        <span style="font-size:0.82rem;color:var(--dim);">digits (up to 10,000)</span>
+      </div>
+      <button class="btn btn-ghost" onclick="applyLearnGoal()">Apply</button>
+      <span id="learnGoalWarning" role="alert" style="display:none; font-size:0.78rem; color:var(--danger); font-family:'JetBrains Mono',monospace;">Numbers only — letters aren't allowed here.</span>
+      <button class="btn btn-primary" onclick="revealNext()">Reveal next chunk</button>
+      <button class="btn btn-ghost" onclick="revealAll()">Reveal all</button>
+      <button class="btn btn-ghost" onclick="resetLearn()">Reset</button>
+    </div>
+
+    <div class="progress-track"><div class="progress-fill" id="learnProgress" style="width:0%"></div></div>
+
+    <div class="digit-panel">
+      <div class="digit-grid" id="learnGrid"></div>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="label">Memory trick</span>
+      Count the letters in each word of: "Now, I wish I could recollect pi easily, since all those figures constantly bother me." That gives 3-1-4-1-5-9-2-6-5-3-5-8-9 — the first thirteen digits, hidden in plain sentence.
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section class="view" id="view-test">
+    <div class="section-head">
+      <div class="eyebrow">RECALL MODE</div>
+      <h2>Type it from memory</h2>
+      <p>Choose a length, then type each digit. Boxes turn green the instant a digit is right, and red the instant it's wrong — nothing is hidden until the end.</p>
+    </div>
+
+    <div class="test-intro">
+      <div class="control-group">
+        <label for="testLengthInput">Test length</label>
+        <input type="text" id="testLengthInput" class="pill-btn" style="width:70px;"
+               inputmode="numeric" value="20" maxlength="5"
+               aria-describedby="testLengthWarning">
+        <span style="font-size:0.82rem;color:var(--dim);">digits (up to 10,000)</span>
+      </div>
+      <span id="testLengthWarning" role="alert" style="display:none; font-size:0.78rem; color:var(--danger); font-family:'JetBrains Mono',monospace;">Numbers only — letters aren't allowed here.</span>
+      <button class="btn btn-primary" onclick="startTest()">Start test</button>
+      <button class="btn btn-ghost" onclick="clearTest()">Clear</button>
+    </div>
+
+    <div class="test-input-grid" id="testGrid" aria-label="Pi digit entry"></div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="result-stats">
+        <div class="stat"><div class="num ok" id="statCorrect">0</div><div class="lbl">Correct digits</div></div>
+        <div class="stat"><div class="num warn" id="statStreak">0</div><div class="lbl">Correct streak from start</div></div>
+        <div class="stat"><div class="num" id="statAccuracy">0%</div><div class="lbl">Accuracy</div></div>
+      </div>
+      <div class="result-msg" id="resultMsg" aria-live="polite"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>Built for practice, not pressure — even mathematicians look pi up. 3.14159265358979323846…</div>
+  <div class="footer-credit">
+    This site is created by Aniruddh Singh<br>
+    <a href="https://aniruddhdev.gt.tc" target="_blank" rel="noopener noreferrer">aniruddhdev.gt.tc</a>
+  </div>
+  <div class="footer-copyright">&copy; 2026 PiMemory</div>
+</footer>
+
+<script>
+const PI_DIGITS = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213949463952247371907021798609437027705392171762931767523846748184676694051320005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235420199561121290219608640344181598136297747713099605187072113499999983729780499510597317328160963185950244594553469083026425223082533446850352619311881710100031378387528865875332083814206171776691473035982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201989380952572010654858632788659361533818279682303019520353018529689957736225994138912497217752834791315155748572424541506959508295331168617278558890750983817546374649393192550604009277016711390098488240128583616035637076601047101819429555961989467678374494482553797747268471040475346462080466842590694912933136770289891521047521620569660240580381501935112533824300355876402474964732639141992726042699227967823547816360093417216412199245863150302861829745557067498385054945885869269956909272107975093029553211653449872027559602364806654991198818347977535663698074265425278625518184175746728909777727938000816470600161452491921732172147723501414419735685481613611573525521334757418494684385233239073941433345477624168625189835694855620992192221842725502542568876717904946016534668049886272327917860857843838279679766814541009538837863609506800642251252051173929848960841284886269456042419652850222106611863067442786220391949450471237137869609563643719172874677646575739624138908658326459958133904780275900994657640789512694683983525957098258226205224894077267194782684826014769909026401363944374553050682034962524517493996514314298091906592509372216964615157098583874105978859597729754989301617539284681382686838689427741559918559252459539594310499725246808459872736446958486538367362226260991246080512438843904512441365497627807977156914359977001296160894416948685558484063534220722258284886481584560285060168427394522674676788952521385225499546667278239864565961163548862305774564980355936345681743241125150760694794510965960940252288797108931456691368672287489405601015033086179286809208747609178249385890097149096759852613655497818931297848216829989487226588048575640142704775551323796414515237462343645428584447952658678210511413547357395231134271661021359695362314429524849371871101457654035902799344037420073105785390621983874478084784896833214457138687519435064302184531910484810053706146806749192781911979399520614196634287544406437451237181921799983910159195618146751426912397489409071864942319615679452080951465502252316038819301420937621378559566389377870830390697920773467221825625996615014215030680384477345492026054146659252014974428507325186660021324340881907104863317346496514539057962685610055081066587969981635747363840525714591028970641401109712062804390397595156771577004203378699360072305587631763594218731251471205329281918261861258673215791984148488291644706095752706957220917567116722910981690915280173506712748583222871835209353965725121083579151369882091444210067510334671103141267111369908658516398315019701651511685171437657618351556508849099898599823873455283316355076479185358932261854896321329330898570642046752590709154814165498594616371802709819943099244889575712828905923233260972997120844335732654893823911932597463667305836041428138830320382490375898524374417029132765618093773444030707469211201913020330380197621101100449293215160842444859637669838952286847831235526582131449576857262433441893039686426243410773226978028073189154411010446823252716201052652272111660396665573092547110557853763466820653109896526918620564769312570586356620185581007293606598764861179104533488503461136576867532494416680396265797877185560845529654126654085306143444318586769751456614068007002378776591344017127494704205622305389945613140711270004078547332699390814546646458807972708266830634328587856983052358089330657574067954571637752542021149557615814002501262285941302164715509792592309907965473761255176567513575178296664547791745011299614890304639947132962107340437518957359614589019389713111790429782856475032031986915140287080859904801094121472213179476477726224142548545403321571853061422881375850430633217518297986622371721591607716692547487389866549494501146540628433663937900397692656721463853067360965712091807638327166416274888800786925602902284721040317211860820419000422966171196377921337575114959501566049631862947265473642523081770367515906735023507283540567040386743513622224771589150495309844489333096340878076932599397805419341447377441842631298608099888687413260472156951623965864573021631598193195167353812974167729478672422924654366800980676928238280689964004824354037014163149658979409243237896907069779422362508221688957383798623001593776471651228935786015881617557829735233446042815126272037343146531977774160319906655418763979293344195215413418994854447345673831624993419131814809277771038638773431772075456545322077709212019051660962804909263601975988281613323166636528619326686336062735676303544776280350450777235547105859548702790814356240145171806246436267945612753181340783303362542327839449753824372058353114771199260638133467768796959703098339130771098704085913374641442822772634659470474587847787201927715280731767907707157213444730605700733492436931138350493163128404251219256517980694113528013147013047816437885185290928545201165839341965621349143415956258658655705526904965209858033850722426482939728584783163057777560688876446248246857926039535277348030480290058760758251047470916439613626760449256274204208320856611906254543372131535958450687724602901618766795240616342522577195429162991930645537799140373404328752628889639958794757291746426357455254079091451357111369410911939325191076020825202618798531887705842972591677813149699009019211697173727847684726860849003377024242916513005005168323364350389517029893922334517220138128069650117844087451960121228599371623130171144484640903890644954440061986907548516026327505298349187407866808818338510228334508504860825039302133219715518430635455007668282949304137765527939751754613953984683393638304746119966538581538420568533862186725233402830871123282789212507712629463229563989898935821167456270102183564622013496715188190973038119800497340723961036854066431939509790190699639552453005450580685501956730229219139339185680344903982059551002263535361920419947455385938102343955449597783779023742161727111723643435439478221818528624085140066604433258885698670543154706965747458550332323342107301545940516553790686627333799585115625784322988273723198987571415957811196358330059408730681216028764962867446047746491599505497374256269010490377819868359381465741268049256487985561453723478673303904688383436346553794986419270563872931748723320837601123029911367938627089438799362016295154133714248928307220126901475466847653576164773794675200490757155527819653621323926406160136358155907422020203187277605277219005561484255518792530343513984425322341576233610642506390497500865627109535919465897514131034822769306247435363256916078154781811528436679570611086153315044521274739245449454236828860613408414863776700961207151249140430272538607648236341433462351897576645216413767969031495019108575984423919862916421939949072362346468441173940326591840443780513338945257423995082965912285085558215725031071257012668302402929525220118726767562204154205161841634847565169998116141010029960783869092916030288400269104140792886215078424516709087000699282120660418371806535567252532567532861291042487761825829765157959847035622262934860034158722980534989650226291748788202734209222245339856264766914905562842503912757710284027998066365825488926488025456610172967026640765590429099456815065265305371829412703369313785178609040708667114965583434347693385781711386455873678123014587687126603489139095620099393610310291616152881384379099042317473363948045759314931405297634757481193567091101377517210080315590248530906692037671922033229094334676851422144773793937517034436619910403375111735471918550464490263655128162288244625759163330391072253837421821408835086573917715096828874782656995995744906617583441375223970968340800535598491754173818839994469748676265516582765848358845314277568790029095170283529716344562129640435231176006651012412006597558512761785838292041974844236080071930457618932349229279650198751872127267507981255470958904556357921221033346697499235630254947802490114195212382815309114079073860251522742995818072471625916685451333123948049470791191532673430282441860414263639548000448002670496248201792896476697583183271314251702969234889627668440323260927524960357996469256504936818360900323809293459588970695365349406034021665443755890045632882250545255640564482465151875471196218443965825337543885690941130315095261793780029741207665147939425902989695946995565761218656196733786236256125216320862869222103274889218654364802296780705765615144632046927906821207388377814233562823608963208068222468012248261177185896381409183903673672220888321513755600372798394004152970028783076670944474560134556417254370906979396122571429894671543578468788614445812314593571984922528471605049221242470141214780573455105008019086996033027634787081081754501193071412233908663938339529425786905076431006383519834389341596131854347546495569781038293097164651438407007073604112373599843452251610507027056235266012764848308407611830130527932054274628654036036745328651057065874882256981579367897669742205750596834408697350201410206723585020072452256326513410559240190274216248439140359989535394590944070469120914093870012645600162374288021092764579310657922955249887275846101264836999892256959688159205600101655256375678";
+const FULL_PI = "3." + PI_DIGITS;
+
+function launchIntro(){
+  const overlay = document.getElementById('introOverlay');
+  const piEl = document.getElementById('introPi');
+  const dotsContainer = document.getElementById('introDots');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function finish(){
+    if(overlay && overlay.parentNode){
+      overlay.style.transition = 'none';
+      overlay.style.opacity = '0';
+      overlay.remove();
+    }
+    document.body.style.overflow = '';
+  }
+
+  if(reduced || !overlay || !piEl || !dotsContainer){
+    finish();
+    return;
+  }
+
+  setTimeout(finish, 6000);
+
+  try{
+    document.body.style.overflow = 'hidden';
+    const colors = ['#e1483c', '#d9a441', '#2f8f6e', '#f0c869', '#ff6b5a'];
+    const total = 30;
+    let heroDot = null;
+
+    const HOLD = 950;
+    const SCATTER = 1500;
+    const ZOOM = 900;
+    const FADE = 550;
+
+    setTimeout(() => {
+      try{
+        piEl.classList.add('pi-exploding');
+        const creditEl = document.getElementById('introCredit');
+        if(creditEl) creditEl.classList.add('pi-exploding');
+        for(let i = 0; i < total; i++){
+          const isHero = i === 0;
+          const dot = document.createElement('div');
+          dot.className = 'intro-dot';
+          const angle = Math.random() * Math.PI * 2;
+          const dist = isHero ? Math.random() * 6 : 70 + Math.random() * 240;
+          const size = isHero ? 14 : 5 + Math.random() * 11;
+          dot.style.width = size + 'px';
+          dot.style.height = size + 'px';
+          dot.style.background = isHero ? '#f0c869' : colors[Math.floor(Math.random() * colors.length)];
+          dot.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+          dot.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+          dot.style.animationDelay = (Math.random() * 0.2) + 's';
+          dotsContainer.appendChild(dot);
+          if(isHero) heroDot = dot;
+        }
+      }catch(e){ finish(); }
+    }, HOLD);
+
+    setTimeout(() => {
+      try{
+        if(!heroDot) return;
+        heroDot.style.animation = 'none';
+        void heroDot.offsetHeight;
+        heroDot.style.opacity = '1';
+        heroDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        void heroDot.offsetHeight;
+
+        const diag = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
+        const scale = (diag * 1.6) / 14;
+        heroDot.style.transition = `transform ${ZOOM}ms cubic-bezier(.22,.61,.28,1)`;
+        heroDot.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+        dotsContainer.querySelectorAll('.intro-dot').forEach(d => {
+          if(d !== heroDot){
+            d.style.transition = 'opacity 0.25s ease';
+            d.style.opacity = '0';
+          } else {
+            d.style.zIndex = '2';
+          }
+        });
+      }catch(e){ finish(); }
+    }, HOLD + SCATTER);
+
+    setTimeout(() => {
+      try{
+        overlay.style.transition = `opacity ${FADE}ms ease`;
+        overlay.style.opacity = '0';
+      }catch(e){ finish(); }
+    }, HOLD + SCATTER + ZOOM);
+
+    setTimeout(finish, HOLD + SCATTER + ZOOM + FADE + 50);
+  }catch(e){
+    finish();
+  }
+}
+launchIntro();
+
+(function initCustomCursor(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let ringX = mouseX, ringY = mouseY;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    if(reduced){
+      ringX = mouseX; ringY = mouseY;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    }
+  });
+
+  if(!reduced){
+    (function animateRing(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animateRing);
+    })();
+  }
+
+  const HOVER_SELECTOR = 'a, button, select, input, .mode-card, .nav-btn, .btn, .digit-input';
+  document.addEventListener('mouseover', (e) => {
+    if(e.target.closest(HOVER_SELECTOR)) ring.classList.add('hovering');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if(e.target.closest(HOVER_SELECTOR)) ring.classList.remove('hovering');
+  });
+})();
+
+let bestStreak = 0;
+async function loadBest(){
+  try{
+    const r = await window.storage.get('pi-best-streak');
+    if(r && r.value){ bestStreak = parseInt(r.value) || 0; }
+  }catch(e){ bestStreak = 0; }
+  document.getElementById('bestBadge').textContent = 'best streak: ' + bestStreak;
+}
+async function saveBest(v){
+  bestStreak = v;
+  document.getElementById('bestBadge').textContent = 'best streak: ' + bestStreak;
+  try{ await window.storage.set('pi-best-streak', String(v)); }catch(e){ /* storage unavailable, session-only */ }
+}
+loadBest();
+
+function switchView(name){
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function buildRing(){
+  const ring = document.getElementById('piRing');
+  const count = 24;
+  const radius = 152;
+  const seq = FULL_PI.replace('.', '').slice(0, count);
+  for(let i=0;i<count;i++){
+    const angle = (i / count) * 2 * Math.PI - Math.PI/2;
+    const x = 170 + radius * Math.cos(angle);
+    const y = 170 + radius * Math.sin(angle);
+    const el = document.createElement('div');
+    el.className = 'ring-digit' + (i===0 ? ' d0' : '');
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.animationDelay = (0.6 + i*0.05) + 's';
+    el.textContent = seq[i];
+    ring.appendChild(el);
+  }
+}
+buildRing();
+
+function typewriter(){
+  const el = document.getElementById('typewriter');
+  const text = FULL_PI.slice(0, 16);
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){ el.innerHTML = text + '<span class="cursor">&nbsp;</span>'; return; }
+
+  const TYPE_SPEED = 130;
+  const ERASE_SPEED = 70;
+  const HOLD_FULL = 1400;
+  const HOLD_EMPTY = 500;
+
+  let i = 0;
+  el.innerHTML = '<span class="cursor">&nbsp;</span>';
+
+  function render(){
+    el.innerHTML = text.slice(0, i) + '<span class="cursor">&nbsp;</span>';
+  }
+
+  function typeStep(){
+    i++;
+    render();
+    if(i >= text.length){
+      setTimeout(eraseStep, HOLD_FULL);
+    } else {
+      setTimeout(typeStep, TYPE_SPEED);
+    }
+  }
+
+  function eraseStep(){
+    i--;
+    render();
+    if(i <= 0){
+      setTimeout(typeStep, HOLD_EMPTY);
+    } else {
+      setTimeout(eraseStep, ERASE_SPEED);
+    }
+  }
+
+  setTimeout(typeStep, TYPE_SPEED);
+}
+setTimeout(typewriter, 300);
+
+const FACTS = [
+  "Pi is irrational — its digits never repeat and never end.",
+  "Pi Day is celebrated on March 14th (3/14) around the world.",
+  "Over 100 trillion digits of pi have been computed by supercomputers.",
+  "The symbol π was popularized by mathematician Leonhard Euler in the 1700s.",
+  "Most engineering only ever needs the first 15–40 digits of pi.",
+  "Memory athletes have recited pi to tens of thousands of digits from memory."
+];
+document.getElementById('factsStrip').innerHTML = FACTS.map(f => `<div class="fact-chip">${f}</div>`).join('');
+
+let learnGoal = 20;
+let revealedCount = 0;
+let chunkSizeValue = 5;
+
+function applyChunkSize(){
+  const input = document.getElementById('chunkSizeInput');
+  const warning = document.getElementById('chunkSizeWarning');
+  const raw = input.value.trim();
+
+  if(raw === '' || !/^[0-9]+$/.test(raw)){
+    warning.style.display = 'inline';
+    input.value = raw.replace(/[^0-9]/g, '');
+    return;
+  }
+  warning.style.display = 'none';
+
+  let num = parseInt(raw, 10);
+  if(isNaN(num) || num < 1) num = 1;
+  if(num > 25) num = 25;
+  input.value = num;
+
+  chunkSizeValue = num;
+  renderLearn();
+}
+
+(function wireChunkSizeInput(){
+  const input = document.getElementById('chunkSizeInput');
+  const warning = document.getElementById('chunkSizeWarning');
+  input.addEventListener('input', () => {
+    if(/[^0-9]/.test(input.value)){
+      warning.style.display = 'inline';
+      input.value = input.value.replace(/[^0-9]/g, '');
+    } else {
+      warning.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') applyChunkSize();
+  });
+  input.addEventListener('blur', applyChunkSize);
+})();
+
+function applyLearnGoal(){
+  const input = document.getElementById('learnGoalInput');
+  const warning = document.getElementById('learnGoalWarning');
+  const raw = input.value.trim();
+
+  if(raw === '' || !/^[0-9]+$/.test(raw)){
+    warning.style.display = 'inline';
+    input.value = raw.replace(/[^0-9]/g, '');
+    return;
+  }
+  warning.style.display = 'none';
+
+  let num = parseInt(raw, 10);
+  if(isNaN(num) || num < 1) num = 1;
+  if(num > PI_DIGITS.length) num = PI_DIGITS.length;
+  input.value = num;
+
+  learnGoal = num;
+  if(revealedCount > learnGoal) revealedCount = learnGoal;
+  renderLearn();
+}
+
+(function wireLearnGoalInput(){
+  const input = document.getElementById('learnGoalInput');
+  const warning = document.getElementById('learnGoalWarning');
+  input.addEventListener('input', () => {
+    if(/[^0-9]/.test(input.value)){
+      warning.style.display = 'inline';
+      input.value = input.value.replace(/[^0-9]/g, '');
+    } else {
+      warning.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') applyLearnGoal();
+  });
+  input.addEventListener('blur', applyLearnGoal);
+})();
+
+(function wireTestLengthInput(){
+  const input = document.getElementById('testLengthInput');
+  const warning = document.getElementById('testLengthWarning');
+  input.addEventListener('input', () => {
+    if(/[^0-9]/.test(input.value)){
+      warning.style.display = 'inline';
+      input.value = input.value.replace(/[^0-9]/g, '');
+    } else {
+      warning.style.display = 'none';
+    }
+  });
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') startTest();
+  });
+})();
+
+function renderLearn(){
+  const chunk = chunkSizeValue;
+  const grid = document.getElementById('learnGrid');
+  grid.innerHTML = '';
+  const digits = ("3" + PI_DIGITS).slice(0, learnGoal + 1);
+  let groupEl = null;
+  for(let i=0;i<digits.length;i++){
+    if(i % chunk === 0){
+      groupEl = document.createElement('div');
+      groupEl.className = 'digit-group';
+      grid.appendChild(groupEl);
+    }
+    const tile = document.createElement('div');
+    const isRevealed = i <= revealedCount;
+    tile.className = 'digit-tile' + (isRevealed ? ' revealed' : '') + (i===0 ? ' lead' : '') + (i===revealedCount && i>0 ? ' newest' : '');
+    tile.textContent = isRevealed ? digits[i] : '·';
+    groupEl.appendChild(tile);
+  }
+  const pct = Math.min(100, Math.round((revealedCount / learnGoal) * 100));
+  document.getElementById('learnProgress').style.width = pct + '%';
+}
+
+function revealNext(){
+  revealedCount = Math.min(learnGoal, revealedCount + chunkSizeValue);
+  renderLearn();
+}
+function revealAll(){ revealedCount = learnGoal; renderLearn(); }
+function resetLearn(){ revealedCount = 0; renderLearn(); }
+renderLearn();
+
+let testDigits = [];
+let testInputs = [];
+
+function startTest(){
+  const input = document.getElementById('testLengthInput');
+  const warning = document.getElementById('testLengthWarning');
+  const raw = input.value.trim();
+
+  if(raw === '' || !/^[0-9]+$/.test(raw)){
+    warning.style.display = 'inline';
+    input.value = raw.replace(/[^0-9]/g, '');
+    return;
+  }
+  warning.style.display = 'none';
+
+  let len = parseInt(raw, 10);
+  if(isNaN(len) || len < 1) len = 1;
+  if(len > PI_DIGITS.length) len = PI_DIGITS.length;
+  input.value = len;
+
+  testDigits = ("3" + PI_DIGITS).slice(0, len + 1).split('');
+  const grid = document.getElementById('testGrid');
+  grid.innerHTML = '';
+  testInputs = [];
+  let groupEl = null;
+  testDigits.forEach((d, i) => {
+    if(i % 5 === 0){
+      groupEl = document.createElement('div');
+      groupEl.className = 'test-group';
+      grid.appendChild(groupEl);
+    }
+    const input = document.createElement('input');
+    input.className = 'digit-input';
+    input.setAttribute('inputmode','numeric');
+    input.setAttribute('maxlength','1');
+    input.setAttribute('aria-label', i===0 ? 'leading digit before decimal' : 'digit ' + i + ' after the decimal point');
+    input.dataset.index = i;
+    input.addEventListener('input', onDigitInput);
+    input.addEventListener('keydown', onDigitKeydown);
+    groupEl.appendChild(input);
+    testInputs.push(input);
+  });
+  document.getElementById('resultPanel').classList.remove('show');
+  testInputs[0].classList.add('current');
+  testInputs[0].focus();
+}
+
+function onDigitInput(e){
+  const input = e.target;
+  const i = parseInt(input.dataset.index);
+  const val = input.value.replace(/[^0-9]/g,'').slice(-1);
+  input.value = val;
+  if(val === ''){ return; }
+  const correct = val === testDigits[i];
+  input.classList.remove('current');
+  input.classList.toggle('correct', correct);
+  input.classList.toggle('incorrect', !correct);
+  if(i < testInputs.length - 1){
+    const next = testInputs[i+1];
+    next.classList.add('current');
+    next.focus();
+  } else {
+    evaluateTest();
+  }
+}
+function onDigitKeydown(e){
+  const input = e.target;
+  const i = parseInt(input.dataset.index);
+  if(e.key === 'Backspace' && input.value === '' && i > 0){
+    const prev = testInputs[i-1];
+    prev.value = '';
+    prev.classList.remove('correct','incorrect');
+    prev.classList.add('current');
+    input.classList.remove('current');
+    prev.focus();
+  }
+}
+
+async function evaluateTest(){
+  let correctCount = 0;
+  let streak = 0;
+  let streakBroken = false;
+  testInputs.forEach((inp, i) => {
+    const isCorrect = inp.value === testDigits[i];
+    if(isCorrect) correctCount++;
+    if(!streakBroken){
+      if(isCorrect) streak++;
+      else streakBroken = true;
+    }
+  });
+  const accuracy = Math.round((correctCount / testDigits.length) * 100);
+  document.getElementById('statCorrect').textContent = correctCount + ' / ' + testDigits.length;
+  document.getElementById('statStreak').textContent = streak;
+  document.getElementById('statAccuracy').textContent = accuracy + '%';
+
+  let msg = '';
+  if(streak === testDigits.length){
+    msg = 'Perfect run, every digit in order. That is genuinely impressive.';
+    launchConfetti();
+  } else if(streakBroken){
+    msg = 'Your correct streak from the start ran ' + streak + ' digits deep before the first slip. Everything after a mistake still gets checked, so partial credit counts too.';
+  }
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultPanel').classList.add('show');
+
+  if(streak > bestStreak){ await saveBest(streak); }
+}
+
+function clearTest(){
+  document.getElementById('testGrid').innerHTML = '';
+  document.getElementById('resultPanel').classList.remove('show');
+  testDigits = []; testInputs = [];
+}
+
+function launchConfetti(){
+  const colors = ['#e1483c','#d9a441','#2f8f6e','#f0c869'];
+  for(let i=0;i<60;i++){
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random()*100 + 'vw';
+    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDuration = (2 + Math.random()*1.5) + 's';
+    piece.style.opacity = 0.9;
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 4000);
+  }
+}
+</script>
+</body>
+</html>
